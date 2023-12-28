@@ -23,10 +23,21 @@ app.use(express.urlencoded({ extended: true }));
 // link you static folder i.e. images, css 
 app.use(express.static('public'));
 //-------------------------//
-
+//import routes
+const authRouter = require("./routes/auth");
+const categoryRouter = require("./routes/category");
+const orderRouter = require("./routes/order");
+const requestRouter = require("./routes/request");
+const serviceRouter = require("./routes/service");
 
 //------- Mount routes -------//
 // Your code goes here
+app.use('/auth', authRouter);
+app.use('/category', categoryRouter);
+app.use('/order', orderRouter);
+app.use('/request', requestRouter);
+app.use('/service', serviceRouter);
+
 
 
 //-------------------------//
