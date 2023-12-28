@@ -12,6 +12,7 @@ exports.order_create_post = (req,res) =>{
     order.save()
     .then((order)=>{
         res.json({order})
+        console.log("order Added succesfully")
     })
     .catch((err)=>{
         console.log(err);
@@ -23,14 +24,15 @@ exports.order_edit_get =(req,res)=>{
     Order.findById(req.query.id)
     .then((order)=>{
         res.json({order})
-
+        console.log("order edited successfully");
     })
     .catch(err =>{
         console.log(err);
+        console.log("please try agin !!");
     })
 }
 
-exports.order_Update_put = (req,res) =>{
+exports.order_Update_post = (req,res) =>{
     Order.findByIdAndUpdate(req.body.id, req.body ,{new:true})
     .then((order)=>{
         res.json({order})
