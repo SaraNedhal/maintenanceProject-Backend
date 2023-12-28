@@ -4,8 +4,15 @@ const serviceSchema = mongoose.Schema({
     name: String,
    serviceProvider: String,
    description: String,
-   UserId: String,
-   categoryId:String
+   UserId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+   categoryId: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category'
+}],
+description:String
 },
 {
     timestamps: true

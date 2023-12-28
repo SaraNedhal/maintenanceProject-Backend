@@ -3,9 +3,15 @@ const mongoose = require('mongoose');
 const requestSchema = mongoose.Schema({
 name: String,
 quantity : String,
-UserId: String,
-serviceId: String,
-problem:String
+UserId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+serviceId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Service'
+},
+problem:[String]
 },
 {
     timestamps: true
