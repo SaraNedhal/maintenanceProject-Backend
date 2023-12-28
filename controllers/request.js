@@ -1,5 +1,14 @@
 const {Request} = require("../models/Request");
 
+module.exports.request_index_get = (req,res) =>{
+  Request.find()
+  .then((request)=>{
+    res.json({request})
+  })
+  .catch(error=> {
+    console.log("error in getting all the requests in backend , " , error);
+  })
+}
 module.exports.request_create_post = (req,res) => {
   let userId = req.query.id;
   let serviceId = req.query.serviceId;
