@@ -11,6 +11,10 @@ const orderCtrl = require("../controllers/order");
 //Routes 
 //create post
 router.post("/add",orderCtrl.order_create_post);
+router.get("/edit",orderCtrl.order_edit_get);
+router.post("/update",orderCtrl.order_update_post);
+router.delete("/delete",orderCtrl.order_delete_get);
+
 
 
 //Export 
