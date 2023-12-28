@@ -9,7 +9,8 @@ router.use(express.json());
 const orderCtrl = require("../controllers/order");
 
 //Routes 
-
+//create post
+router.post("/add",orderCtrl.order_create_post);
 
 
 //Export 
