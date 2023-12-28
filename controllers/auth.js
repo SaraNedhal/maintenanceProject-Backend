@@ -1,7 +1,7 @@
 // restFul API'S for Registration and Authentication
 
 const User = require("../models/User")
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const salt = 10;
 const jwt = require('jsonwebtoken')
 
