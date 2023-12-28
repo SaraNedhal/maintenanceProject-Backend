@@ -12,7 +12,7 @@ const serviceSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Category'
 }],
-description:String
+
 },
 {
     timestamps: true
