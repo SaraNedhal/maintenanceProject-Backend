@@ -11,6 +11,5 @@ const categoryCtrl = require("../controllers/category");
 //Routes 
 
 
-
 //Export 
 module.exports = router;
