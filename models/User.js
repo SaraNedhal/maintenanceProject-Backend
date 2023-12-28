@@ -19,7 +19,9 @@ password:{
     type: String,
     required: true,
     minlength:[6, "Your password is too weak!!!"]
-}
+},
+role: String,
+phoneNumber: String
 },
 {
     timestamps:true
