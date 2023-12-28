@@ -2,15 +2,14 @@ const mongoose = require('mongoose');
 
 const categorySchema = mongoose.Schema({
     name: String,
-   
-//     event: [{
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: 'Event'
-//     }],
-//     image: String
-// },
-service: String,
-User: String
+serviceId: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Service'
+        }],
+UserId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 },
 {
     timestamps: true
@@ -19,3 +18,5 @@ User: String
 const Category = mongoose.model("Category", categorySchema);
 
 module.exports = {Category};
+
+
