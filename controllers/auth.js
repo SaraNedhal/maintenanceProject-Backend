@@ -65,3 +65,13 @@ exports.auth_signup_post =(req, res)=>{
           res.json({"message": "You are not loggedIn!!!"}).status(400);
         }
       }
+      exports.auth_user_index_get = (req, res)=>{
+        User.find()
+        .then((user)=>{
+         res.json({user})
+        })
+        .catch((err)=>{
+       console.log(err)
+        })
+
+      }

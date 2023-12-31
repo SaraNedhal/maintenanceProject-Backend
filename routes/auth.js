@@ -11,6 +11,7 @@ const authCtrl = require("../controllers/auth");
 //Routes 
 router.post("/signup", authCtrl.auth_signup_post);
 router.post("/signin", authCtrl.auth_signin_post);
+router.get("/user", authCtrl.auth_user_index_get);
 
 
 //Export 
