@@ -9,7 +9,8 @@ serviceId: [{
 UserId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
-  }
+  },
+  image: String
 },
 {
     timestamps: true

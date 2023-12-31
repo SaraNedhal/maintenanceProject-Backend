@@ -1,6 +1,6 @@
 const express = require('express');
 const router = require('express').Router();
-
+const upload = require("../config/multer");
 
 router.use(express.json());
 
@@ -10,7 +10,7 @@ const categoryCtrl = require("../controllers/category");
 
 //Routes 
 
-router.post("/add",  categoryCtrl.category_create_post);
+router.post("/add", upload.single("image"), categoryCtrl.category_create_post);
 router.get("/index", categoryCtrl.category_index_get);
 router.delete("/delete", categoryCtrl.category_delete_get);
 router.get("/edit", categoryCtrl.category_edit_get);

@@ -26,6 +26,14 @@ exports.service_create_post = (req, res)=>{
      console.log(err)
     })
     }
+
+    //get all services for one specific category
+    module.exports.service_by_category_get = (req,res) => {
+      Service.find({category_id : req.query.id})
+      .then()
+      .catch()
+
+    }
     
     exports.service_delete_get = (req, res)=>{
      console.log(req.query.id);
