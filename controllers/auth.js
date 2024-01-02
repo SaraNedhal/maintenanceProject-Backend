@@ -75,6 +75,19 @@ exports.auth_signup_post =(req, res)=>{
         })
 
       }
+
+      exports.auth_user_show_get = (req, res)=>{
+        User.findById(req.query.id)
+        .then((user)=>{
+         res.json({user})
+        })
+        .catch((err)=>{
+       console.log(err)
+        })
+
+      }
+
+
       exports.auth_user_edit_get = (req, res)=>{
         User.findById(req.query.id)
         .then((user)=>{
