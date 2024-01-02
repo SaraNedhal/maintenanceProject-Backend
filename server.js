@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 //-------------------------//
 //import routes
+const indexRouter = require("./routes/index")
 const authRouter = require("./routes/auth");
 const categoryRouter = require("./routes/category");
 const orderRouter = require("./routes/order");
@@ -32,6 +33,7 @@ const serviceRouter = require("./routes/service");
 
 //------- Mount routes -------//
 // Your code goes here
+app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/category', categoryRouter);
 app.use('/order', orderRouter);
