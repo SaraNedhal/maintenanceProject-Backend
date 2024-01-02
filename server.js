@@ -18,7 +18,9 @@ const port = process.env.PORT || 3000
 
 
 // to encode req.body - make form data readable in controllers
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/uploads", express.static('uploads'))
 
 // link you static folder i.e. images, css 
 app.use(express.static('public'));
