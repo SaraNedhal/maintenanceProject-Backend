@@ -37,7 +37,7 @@ module.exports.request_edit_get = (req,res) => {
 }
 
 module.exports.request_update_post = (req,res) => {
-   Request.findByIdAndUpdate(req.query.id , req.body , {new:true})
+   Request.findByIdAndUpdate(req.body._id , req.body , {new:true})
    .then((request) => {
     console.log("Request updated successfully");
     res.json({request})
