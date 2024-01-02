@@ -9,9 +9,18 @@ exports.service_create_post = (req, res)=>{
     service.save()
     .then((service)=>{
         console.log(" category id from service in backend (Add service api) : " , service.categoryId);
-      Category.findOne({_id: service.categoryId})
+        let categoryIdLoop;
+        service.categoryId.forEach((category)=> {
+          categoryIdLoop = category._id
+        
+        console.log("categoryIdLoop: " , categoryIdLoop);
+      Category.findById(categoryIdLoop)
       .then((category)=> {
-        category.serviceId = service._id;
+        console.log("catch category record: , " , category);
+        category.serviceId.push(service._id);
+        console.log("category record after adding serviceId: , " , category);
+        category.save();
+      })
       })
       .catch(error=>{
         console.log("error on adding service id's to the category model in backend: " , error);
