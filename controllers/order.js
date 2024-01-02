@@ -1,5 +1,15 @@
 const {Order} = require("../models/Order");
 
+exports.order_index_get = (req,res) =>{
+    //populete
+    Order.find().populate('requestId')
+    .then((order)=>{
+        res.json({order})
+      })
+      .catch(error=> {
+        console.log("error in getting all the orders in backend , " , error);
+      })
+}
 exports.order_create_post = (req,res) =>{
      console.log(req.body);
     let order = new  Order(req.body);
@@ -33,7 +43,7 @@ exports.order_edit_get =(req,res)=>{
 }
 
 exports.order_update_post = (req,res) =>{
-    Order.findByIdAndUpdate(req.body.id, req.body ,{new:true})
+    Order.findByIdAndUpdate(req.body._id, req.body ,{new:true})
     .then((order)=>{
         res.json({order})
     console.log(" order Updated successfully");
