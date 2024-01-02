@@ -1,13 +1,21 @@
+const { Category } = require("../models/Category");
 const {Service} = require("../models/Service")
 
 
 exports.service_create_post = (req, res)=>{
     console.log(req.body)
     let service = new Service(req.body);
-    
-    // Save Serive
+    // Save service
     service.save()
     .then((service)=>{
+        console.log(" category id from service in backend (Add service api) : " , service.categoryId);
+      Category.findOne({_id: service.categoryId})
+      .then((category)=> {
+        category.serviceId = service._id;
+      })
+      .catch(error=>{
+        console.log("error on adding service id's to the category model in backend: " , error);
+      })
         res.json({service})
     })
     .catch((err)=>{
@@ -25,6 +33,14 @@ exports.service_create_post = (req, res)=>{
     .catch((err)=>{
      console.log(err)
     })
+    }
+
+    //get all services for one specific category
+    module.exports.service_by_category_get = (req,res) => {
+      Service.find({category_id : req.query.id})
+      .then()
+      .catch()
+
     }
     
     exports.service_delete_get = (req, res)=>{
