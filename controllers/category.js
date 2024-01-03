@@ -17,7 +17,7 @@ exports.category_create_post = (req, res) => {
   console.log("req.body");
   console.log(req.body);
 
-  const data = JSON.parse(req.body.addCategory);
+  const data = JSON.parse(req.body.category);
 
   let newlyAddedCategory = {
     name: data.name,

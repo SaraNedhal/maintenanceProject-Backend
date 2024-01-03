@@ -56,8 +56,20 @@ exports.service_create_post = (req, res)=>{
      console.log(req.query.id);
      Service.findByIdAndDelete(req.query.id)
      .then((service)=>{
-       res.json({service})
-     })
+      let categoryIdLoop;
+      service.categoryId.forEach((category)=> {
+        categoryIdLoop = category._id    
+        Category.findById(categoryIdLoop)
+        .then((category)=> {
+          console.log("catch category record: , " , category);
+          const serviceIndex = service.categoryId.indexOf(service._id);
+          category.serviceId.splice(serviceIndex , 1);
+          console.log("category record after deleting serviceId: , " , category);
+          category.save();
+        })  
+      })
+      res.json({service})
+    })
      .catch((err)=>{
         console.log(err);
      })
@@ -75,9 +87,24 @@ exports.service_create_post = (req, res)=>{
     }
     
     exports.service_update_put = (req, res)=> {
-      console.log(req.body.id)
+      console.log(req.body._id)
+      console.log("the request of the updated body :" , req.body);
       Service.findByIdAndUpdate(req.body._id, req.body,{new:true})
       .then((service)=>{
+        let categoryIdLoop;
+        console.log(" service.categoryId: " ,  service.categoryId);
+        service.categoryId.forEach((category)=> {
+          categoryIdLoop = category._id    
+          Category.findById(categoryIdLoop)
+          .then((category)=> {
+            console.log("catch category record: , " , category);
+            const serviceIndex = service.categoryId.indexOf(service._id);
+            category.serviceId.splice(serviceIndex , 0 , service._id );
+
+            console.log("category record after updating serviceId: , " , category);
+            category.save();
+          })  
+        })
         res.json({service})
       })
       .catch((err)=>{
