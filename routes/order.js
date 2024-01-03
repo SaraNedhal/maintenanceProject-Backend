@@ -12,6 +12,7 @@ const orderCtrl = require("../controllers/order");
 //create post
 router.post("/add",orderCtrl.order_create_post);
 router.get("/index",orderCtrl.order_index_get);
+router.get("/show",orderCtrl.order_index_user_get);
 router.get("/edit",orderCtrl.order_edit_get);
 router.post("/update",orderCtrl.order_update_post);
 router.delete("/delete",orderCtrl.order_delete_get);

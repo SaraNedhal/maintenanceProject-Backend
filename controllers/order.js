@@ -10,6 +10,18 @@ exports.order_index_get = (req,res) =>{
         console.log("error in getting all the orders in backend , " , error);
       })
 }
+
+module.order_index_user_get =  (req,res) => {
+    const userId = req.query.id
+    Order.find().populate('requestId')
+    .where({UserId : userId})
+    .then(userOrders =>{
+        res.json(userOrders)
+    })
+    .catch(error=>{
+        console.log("failed to load all the list of current user orders in backend" , error);
+    })
+}
 exports.order_create_post = (req,res) =>{
      console.log(req.body);
     let order = new  Order(req.body);
