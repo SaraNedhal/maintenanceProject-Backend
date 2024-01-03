@@ -43,6 +43,16 @@ exports.service_create_post = (req, res)=>{
      console.log(err)
     })
     }
+     exports.service_show_get = (req,res) =>{
+      Service.findById(req.query._id)
+      .then((service)=>{
+        res.json({service})
+
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+     }
 
     //get all services for one specific category
     module.exports.service_by_category_get = (req,res) => {
