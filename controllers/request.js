@@ -10,11 +10,10 @@ module.exports.request_index_get = (req,res) =>{
   })
 }
 module.exports.request_create_post = (req,res) => {
-  let userId = req.query.id;
-  let serviceId = req.query.serviceId;
+  // let serviceId = req.query.serviceId;
  let request = new Request(req.body);
- request.UserId = userId;
- request.serviceId = serviceId;
+//  request.UserId = userId;
+//  request.serviceId = serviceId;
  request.save()
  .then((request)=>{
   console.log("Request created successfully");
