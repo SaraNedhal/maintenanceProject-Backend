@@ -6,6 +6,10 @@ requestId:{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Request'
   },
+  // userId:{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref:'User'
+  // },
 amount: Number
 
 },

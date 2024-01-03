@@ -1,3 +1,4 @@
+const { Order } = require("../models/Order");
 const {Request} = require("../models/Request");
 
 module.exports.request_index_get = (req,res) =>{
