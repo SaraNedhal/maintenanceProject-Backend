@@ -1,5 +1,7 @@
 const { ConnectionStates } = require("mongoose");
 const { Category } = require("../models/Category");
+const uploadCloudinary = require('../config/cloudinaryConfig');
+const User = require("../models/User");
 
 //restFul Api's
 
@@ -13,12 +15,69 @@ UserId: {
     ref: 'User'
   },
   image: String */
-exports.category_create_post = (req, res) => {
+// exports.category_create_post = async(req, res) => {
+//   console.log("req.body");
+//   console.log(req.body);
+// console.log("req.body finished")
+// console.log("here00")
+
+//   const data = JSON.parse(req.body);
+//   console.log("here01")
+
+//   let imageValue = "";
+//   if(req.file){
+//     imageValue = req.file.filename
+//   }
+//   let UserId ="";
+// if(data.userId){
+//   UserId= data.userId
+// }
+// else{
+//   UserId="User didn't provide User Id"
+// }
+// let catName ="";
+// if(data.name){
+//   catName= data.name
+// }
+// else{
+//   catName="User didn't provide Category name"
+// }
+//   let newlyAddedCategory = {
+//     name: catName,
+//     // serviceId : req.body.serviceId,
+//     UserId: UserId,
+//     image: imageValue,
+//   };
+//   console.log("here02")
+
+//   let category = new Category(newlyAddedCategory);
+//   if(category.image){
+//     await uploadCloudinary.upload_single(category.image)
+//   }
+
+//   // let category = new Category(req.body);
+//   // let image = req.file.filename;
+//   // let userId = req.body.userId;
+//   // category.UserId = userId
+//   // category.image= image;
+// console.log("here1")
+//   // Save Category
+//   category
+//     .save()
+//     .then((category) => {
+//       console.log("here2")
+
+//       res.json({ category });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
+
+exports.category_create_post = async (req, res) => {
   console.log("req.body");
   console.log(req.body);
-
   const data = JSON.parse(req.body.category);
-
   let newlyAddedCategory = {
     name: data.name,
     // serviceId : req.body.serviceId,
@@ -31,8 +90,17 @@ exports.category_create_post = (req, res) => {
   // let userId = req.body.userId;
   // category.UserId = userId
   // category.image= image;
-
   // Save Category
+
+  try{
+    if(req.file){
+    await uploadCloudinary.upload_single(req.file.path)
+  }
+}
+catch(err){
+  console.log(err, err.message)
+}
+
   category
     .save()
     .then((category) => {
