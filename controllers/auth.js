@@ -6,8 +6,12 @@ const salt = 10;
 const jwt = require('jsonwebtoken')
 
 exports.auth_signup_post =(req, res)=>{
-    let user = new User(req.body);
-    let hash = bcrypt.hashSync(req.body.password, salt);
+    let user = new User(JSON.parse(req.body.user));
+    if(req.file)
+    user.image= req.file.filename;
+    else
+    user.image = "profile.png";
+    let hash = bcrypt.hashSync(user.password, salt);
     console.log(hash);
     
     user.password = hash;

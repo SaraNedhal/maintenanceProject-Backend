@@ -21,7 +21,8 @@ password:{
     minlength:[6, "Your password is too weak!!!"]
 },
 role: String,
-phoneNumber: String
+phoneNumber: String,
+image:String
 },
 {
     timestamps:true

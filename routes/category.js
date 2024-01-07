@@ -23,8 +23,8 @@ router.post(
 );
 
 router.get("/index", categoryCtrl.category_index_get);
-router.delete("/delete", categoryCtrl.category_delete_get);
-router.get("/edit", categoryCtrl.category_edit_get);
+router.delete("/delete", isLoggedIn,HasRole("admin"), categoryCtrl.category_delete_get);
+router.get("/edit", isLoggedIn,HasRole("admin"), categoryCtrl.category_edit_get);
 router.put("/update", upload.single("image"), categoryCtrl.category_update_put);
 
 //Export

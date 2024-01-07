@@ -20,6 +20,7 @@ exports.service_create_post = (req, res)=>{
         category.serviceId.push(service._id);
         console.log("category record after adding serviceId: , " , category);
         category.save();
+        res.json({service})
       })
       })
       .catch(error=>{
